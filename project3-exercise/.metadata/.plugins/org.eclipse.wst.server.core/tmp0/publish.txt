@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Thu Apr 20 15:08:31 ICT 2017
+#Thu Apr 20 16:32:31 ICT 2017
 org.eclipse.jst.jee.server\:SampleApplication=C\:\\xampp\\tomcat\\wtpwebapps\\SampleApplication
 org.eclipse.jst.jee.server\:SimpleServlet=C\:\\xampp\\tomcat\\wtpwebapps\\SimpleServlet

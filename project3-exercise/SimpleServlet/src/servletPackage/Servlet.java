@@ -21,8 +21,17 @@ import org.json.simple.JSONObject;
 @WebServlet(description = "This is a sample servlet", urlPatterns = { "/StudentServlet" })
 public class Servlet extends HttpServlet implements SingleThreadModel {
 	private static final long serialVersionUID = 1L;
-
+	private List<Student> students = new ArrayList<>();
 	private int count = 0;
+	
+	public Servlet()
+	{
+		students.add(new Student(1, "Ariana"));
+		students.add(new Student(2, "Ariadne"));
+		students.add(new Student(3, "Aria"));
+		students.add(new Student(4, "Tony"));
+		students.add(new Student(5, "Terry"));
+	}
 	
 	protected synchronized void increment()
 	{
@@ -47,10 +56,6 @@ public class Servlet extends HttpServlet implements SingleThreadModel {
 		// TODO Auto-generated method stub
 		String message = "Hello from server.";
 		
-		List<Student> students = new ArrayList<Student>();
-		students.add(new Student(1, "ABC"));
-		students.add(new Student(2, "DEF"));
-		
 		JSONObject obj = new JSONObject();
 		JSONArray studentData = new JSONArray();
 		
@@ -66,6 +71,29 @@ public class Servlet extends HttpServlet implements SingleThreadModel {
 		obj.put("message", message);
 	
 		response.getWriter().write(obj.toJSONString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String filter = request.getParameter("name");
+		JSONArray studentData = new JSONArray();
+		
+		for (Student s:students)
+		{
+			if (s.getName().toLowerCase().contains(filter.toLowerCase()))
+			{
+				JSONObject student = new JSONObject();
+				student.put("id", s.getId());
+				student.put("name", s.getName());
+				studentData.add(student);
+			}
+		}
+		
+		if (studentData.isEmpty())
+			response.sendError(404);
+		else
+			response.getWriter().write(studentData.toJSONString());
 	}
 
 }
