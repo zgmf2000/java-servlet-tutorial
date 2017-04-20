@@ -1,0 +1,30 @@
+package servletPackage;
+
+import java.util.List;
+
+public class JSONOutput {
+	private List<Student> data;
+	private String message;
+	
+	public JSONOutput(List<Student> data, String message)
+	{
+		this.data = data;
+		this.message = message;
+	}
+
+	public List<Student> getData() {
+		return data;
+	}
+
+	public void setData(List<Student> data) {
+		this.data = data;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+}
