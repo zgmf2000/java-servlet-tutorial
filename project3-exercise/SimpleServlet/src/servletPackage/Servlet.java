@@ -19,6 +19,7 @@ import org.json.simple.JSONObject;
  * Servlet implementation class Servlet
  */
 @WebServlet(description = "This is a sample servlet", urlPatterns = { "/StudentServlet" })
+@MultipartConfig
 public class Servlet extends HttpServlet implements SingleThreadModel {
 	private static final long serialVersionUID = 1L;
 	private List<Student> students = new ArrayList<>();
