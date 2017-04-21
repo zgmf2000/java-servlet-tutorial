@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Servlet
  */
 @WebServlet(description = "This is a sample servlet", urlPatterns = { "/Servlet" })
-public class Servlet extends HttpServlet implements Java {
+public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
 
 	private int count = 0;
